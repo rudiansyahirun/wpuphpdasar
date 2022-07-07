@@ -32,7 +32,7 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
     <tr>
         <td><?= $i;?></td>
         <td>
-            <a href="">Edit</a> |
+            <a href="ubah.php?id=<?= $mhs['id'];?>">Edit</a> |
             <a href="hapus.php?id=<?= $mhs['id'];?>" onclick="return confirm('Yakin?')">Delete</a>
         </td>
         <td><img src="img/<?= $mhs['gambar'];?>" width="50"></td>
