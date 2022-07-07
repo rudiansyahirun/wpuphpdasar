@@ -3,6 +3,12 @@
 require 'functions.php';
 // take from table mahasiswa
 $mahasiswa = query("SELECT * FROM mahasiswa");
+
+// set query from input search
+if (isset($_POST["cari"])) {
+    $mahasiswa = cari($_POST["keyword"]);
+}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -17,6 +23,14 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
     <a href="tambah.php">Tambah data mahasiswa</a>
     <br><br>
 
+<!-- search input for mahasiswa's nama -->
+    <form action="" method="post">
+        <input type="text" name="keyword" size="30" autocomplete="off" placeholder="masukkan keyword pencarian.." autofocus>
+        <button type="submit" name="cari">Cari!</button>
+    </form>
+    <br>
+
+<!-- mahasiswa data table -->
 <table border="1" cellpadding="10" cellspacing="0">
     <tr>
         <th>No.</th>
