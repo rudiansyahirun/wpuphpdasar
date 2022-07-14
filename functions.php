@@ -144,4 +144,44 @@ function cari($keyword) {
     return query($query);
 }
 
+
+
+// fuction for register
+function registrasi($data) {
+    global $db;
+
+    $username = strtolower(stripslashes($data["username"]));
+    $password = mysqli_real_escape_string($db, $data["password"]);
+    $password2 = mysqli_real_escape_string($db, $data["password2"]);
+
+    // check if the username is already taken
+    $result = mysqli_query($db, "SELECT username FROM users WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)) {
+        echo "<script>
+                alert('username sudah terdaftar!');
+            </script>";
+        return false;
+    }
+
+    // check if the password is the same
+    if ($password !== $password2) {
+        echo "<script>
+                alert('konfirmasi password tidak sama!');
+            </script>";
+        return false;
+    }
+
+    // hash the password
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    // query to insert data
+    $query = "INSERT INTO users VALUES ('', '$username', '$password')";
+
+    // execute query
+    mysqli_query($db, $query);
+
+    // return result
+    return mysqli_affected_rows($db);
+}
+
 ?>

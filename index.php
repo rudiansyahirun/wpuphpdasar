@@ -58,5 +58,6 @@ if (isset($_POST["cari"])) {
     <?php $i++; ?>
     <?php endforeach; ?>
 </table>
+
 </body>
 </html>
