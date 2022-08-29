@@ -1,6 +1,6 @@
 <?php
 // connect to database wpuphpdasar
-$db = mysqli_connect("localhost", "root", "RudiSQLoioi1!", "wpuphpdasar");
+$db = mysqli_connect("127.0.0.1", "root", "1234", "wpuphpdasar");
 
 // function to take data from table
 function query($query) {
